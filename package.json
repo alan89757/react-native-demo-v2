@@ -7,7 +7,18 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "build": "node build.js",
+    "codegen": "react-native codegen-harmony --cpp-output-path ./entry/src/main/cpp/generated --rnoh-module-path ./entry/oh_modules/@rnoh/react-native-openharmony",
+    "dev": "react-native bundle-harmony --dev",
+    "copy": "node copy-to-harmony.js",
+    "dev:basic": "react-native bundle-harmony --dev false --entry-file ./src/bundles/basic/basic.js    --bundle-output ../SampleApp/entry/src/main/resources/rawfile/bundle/basic/basic.harmony.bundle  --config ./basic.config.js",
+    "dev:homepage": "react-native bundle-harmony --dev false --entry-file ./src/pages/tabBars/home/entry.js --bundle-output ../SampleApp/entry/src/main/resources/rawfile/bundle/cp/homepage.harmony.bundle  --config ./homepage.config.js",
+    "dev:goods": "react-native bundle-harmony --dev false --entry-file ./src/bundles/Goods/index.js    --bundle-output ../SampleApp/entry/src/main/resources/rawfile/bundle/cp/goods.harmony.bundle     --config ./goods.config.js",
+    "dev:details": "react-native bundle-harmony --dev false --entry-file ./src/bundles/Details/index.js  --bundle-output ../SampleApp/entry/src/main/resources/rawfile/bundle/bp/details.harmony.bundle   --config ./details.config.js",
+    "dev:test": "react-native bundle-harmony --dev true --entry-file ./src/pages/tabBars/mine/entry.js     --bundle-output ../SampleApp/entry/src/main/resources/rawfile/bundle/bp/test.harmony.bundle      --assets-dest ../SampleApp/entry/src/main/resources/rawfile/assets --config ./test.config.js",
+    "dev:sandbox": "react-native bundle-harmony --dev false --entry-file ./src/bundles/Sandbox/index.js  --bundle-output ../../SampleApp/entry/src/main/resources/rawfile/bundle/bp/sandbox.harmony.bundle   --assets-dest ../SampleApp/entry/src/main/resources/rawfile/assets --config ./sandbox.config.js",
+    "dev:all": "npm run dev:basic && npm run dev:homepage && npm run dev:goods && npm run dev:details && npm run dev:test && npm run dev:sandbox"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -26,6 +37,7 @@
     "eslint": "^8.19.0",
     "jest": "^29.2.1",
     "metro-react-native-babel-preset": "0.76.8",
+    "react-native-harmony": "file:../react-native-harmony/rnoh-react-native-harmony-0.72.29.tgz",
     "prettier": "^2.4.1",
     "react-test-renderer": "18.2.0",
     "typescript": "4.8.4"
